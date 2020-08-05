@@ -1,0 +1,31 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: helloapp
+  labels:
+    {{- include "example-app.labels" . | nindent 4 }}
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'helloapp:latest'
+  successfulBuildsHistoryLimit: 5
+  failedBuildsHistoryLimit: 5
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: 'jboss-eap72-openshift:1.1'
+  source:
+    type: Binary
+    binary: {}
+  triggers:
+    - type: GitHub
+      github:
+        secret: vpy6L-MeSFXumOe3izqZ
+    - type: Generic
+      generic:
+        secret: NuYO9uRrqNWyLSQyiZFS
+  runPolicy: Serial

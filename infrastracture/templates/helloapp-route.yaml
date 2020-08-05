@@ -1,0 +1,15 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: helloapp
+  labels:
+    {{- include "example-app.labels" . | nindent 4 }}
+spec:
+  #host: helloapp-test-helm.apps.lab01.gpslab.club
+  to:
+    kind: Service
+    name: helloapp
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  wildcardPolicy: None
