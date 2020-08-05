@@ -1,8 +1,36 @@
-# Prerequisite
+# Helm deploy
+
+## Automatic namespace creation and git checkout workflow
+
+### Setup:
+`helm plugin install https://github.com/thomastaylor312/helm-namespace`  
+
+`helm plugin install https://github.com/aslafy-z/helm-git.git`  
+
+`helm repo add mycharts git+https://github.com/ccangemi-redhat/demo-deploy@infrastracture`  
+
+### Run
+
+`helm namespace install example-app mycharts/example-app -n demo-deploy`  
+
+## Manual flow
+
+Namespace creation:  
+`oc new-project <namespace>`
+
+`oc project <namespace>`  
+
+Git checkout.  
+
+`helm install example-app example-app/ -n demo-deploy`
+
+# Binary build
+
+## Prerequisite
 
 * maven >= 3.6
 * [oc client](https://docs.openshift.com/container-platform/4.4/cli_reference/openshift_cli/getting-started-cli.html)
-# Build the app
+## Build the app
 
 From the project root
 
@@ -14,29 +42,15 @@ Build the app:
 
 Then go back to the project root
 
-# Crate new project (if needed)
-
-Create the project
-
-```oc new-project eap-playground```
-
-```oc project eap-playground```
-
 # Deploy the app
 
-Create new app:
+Make sure you're in the project:  
 
-```
-oc new-app jboss-eap72-openshift:1.1 --binary --name=helloapp
-```
+```oc project demo-deploy```
 
 Start the binary build:
 
-```oc start-build helloapp --from-file web-app/target/ROOT.war --follow;```
-
-Expose the service:
-
-```oc expose svc helloapp```
+```oc start-build helloapp --from-file target/ROOT.war --follow;```
 
 Wait for the pod with the app to be available (```oc get pods```).
 
