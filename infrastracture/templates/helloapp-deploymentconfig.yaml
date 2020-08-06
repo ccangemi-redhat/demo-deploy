@@ -36,4 +36,12 @@ spec:
             - containerPort: 8778
               protocol: TCP
           imagePullPolicy: Always
+          volumeMounts:
+            - name: config-volume
+              mountPath: /opt/webserver/configuration/
       restartPolicy: Always
+      volumes:
+        - name: config-volume
+          configMap:
+            name: headers
+            defaultMode: 420
