@@ -11,18 +11,16 @@
 
 ### Run
 
-`helm namespace install example-app mycharts/example-app -n demo-deploy`  
+`helm namespace install example-app mycharts/example-app -n <namespace>`  
 
 ## Manual flow
 
 Namespace creation:  
 `oc new-project <namespace>`
 
-`oc project <namespace>`  
-
 Git checkout.  
 
-`helm install example-app example-app/ -n demo-deploy`
+`helm install example-app example-app/ -n <namespace>`
 
 # Binary build
 
