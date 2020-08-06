@@ -3,11 +3,11 @@
 ## Automatic namespace creation and git checkout workflow
 
 ### Setup:
-`helm plugin install https://github.com/thomastaylor312/helm-namespace`  
+`helm plugin install https://gitlab.consulting.redhat.com/ccangemi/helm-namespace`  
 
-`helm plugin install https://github.com/aslafy-z/helm-git.git`  
+`helm plugin install https://gitlab.consulting.redhat.com/ccangemi/helm-git`  
 
-`helm repo add mycharts git+https://github.com/ccangemi-redhat/demo-deploy@infrastracture`  
+`helm repo add mycharts git+ssh://gitlab.consulting.redhat.com/ccangemi@infrastracture`  
 
 ### Run
 
