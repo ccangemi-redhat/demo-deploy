@@ -7,7 +7,7 @@
 
 `helm plugin install https://gitlab.consulting.redhat.com/ccangemi/helm-git`  
 
-`helm repo add mycharts git+ssh://gitlab.consulting.redhat.com/ccangemi@infrastracture`  
+`helm repo add mycharts git+https://github.com/ccangemi-redhat/demo-deploy@infrastracture`  
 
 ### Run
 
