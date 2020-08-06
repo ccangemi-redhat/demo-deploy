@@ -6,4 +6,4 @@ data:
   headers.properties: |-
     header-one=Uno
     header-two=Due
-    header-three=Three3
+    header-three=Three
